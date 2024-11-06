@@ -81,18 +81,6 @@
 <!-- Contenedor principal que incluye el contenido y el footer -->
 <div class="content-wrapper">
 
-  <div class="container-fluid p-3 text-light" id="colorNAV">
-    <div class="row">
-      <div class="col-md-6">
-        <h1 class="fw-bold">LOGO</h1>
-      </div>
-      <div class="col-md-6 text-end">
-        numero de cuenta de la cuenta conectada
-        <a href="/" class="text-light fw-bold">Salir de esta bonita cuenta</a>
-      </div>
-    </div>
-  </div>
-
   <!-- Barra de navegación -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
@@ -102,7 +90,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" (click)="toggleTransactions()">Home / Ver Movimientos</a></li>
+          <li class="nav-item"><a class="nav-link" (click)="toggleTransactions()">Ver saldo / Ver Movimientos</a></li>
         </ul>
       </div>
     </div>
@@ -110,8 +98,8 @@
 
 
   <div class="container mt-4 main-content">
-    <h1>Bienvenido a AgroCrypto</h1>
-    <p>Tu cuenta conectada es: {{ account }}</p>
+    <h1 style="font-size: 5.2rem;">Bienvenido a AgroCrypto</h1>
+    <p>Tu cuenta conectada es: <span style="color: red; font-weight:bold;">{{ account }}</span></p>
 
     <!-- Mostrar el saldo o las transacciones -->
     <div *ngIf="!showTransactions">
@@ -119,7 +107,6 @@
       <div class="card">
         <div class="card-header bg-light d-flex justify-content-between align-items-center">
           <h6 class="mb-0">Cuentas - Participa incrementando tus ahorros en cualquiera de las siguientes Cuentas</h6>
-          <button class="btn btn-outline-secondary btn-sm" (click)="openModal()">Enviar plata</button>
         </div>
         <div class="card-body p-0">
           <table class="table table-hover mb-0">
@@ -175,31 +162,36 @@
 
   </div>
 
-  <div *ngIf="showTransactions && account" class="card mt-4">
-    <div class="card-header">
-      <h6>Historial de Transacciones <button (click)="clearHistory()">Resetear Historial de Transacciones</button>
-      </h6>
+  <div *ngIf="showTransactions && account" class="card mt-4 shadow-lg border-0">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+      <h6 class="mb-0">Historial de Transacciones</h6>
+      <button (click)="clearHistory()" class="btn btn-sm btn-light">Resetear Historial de Transacciones</button>
     </div>
     <div class="card-body p-0">
-      <table class="table table-hover mb-0">
-        <thead>
-          <tr>
-            <th>Hash</th>
-            <th>Bloque</th>
-            <th>De</th>
-            <th>Para</th>
-            <th>Valor (ETH)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let tx of transactions | async">
-            <td class="text-center">{{tx.hash}}</td>
-            <td class="text-center">{{tx.blockNumber}}</td>
-            <td class="text-center">{{tx.from}}</td>
-            <td class="text-center">{{tx.to}}</td>
-            <td class="text-center">{{tx.value}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-hover mb-0 table-striped">
+          <thead class="table-light">
+            <tr>
+              <th class="text-center">Hash</th>
+              <th class="text-center">Bloque</th>
+              <th class="text-center">De</th>
+              <th class="text-center">Para</th>
+              <th class="text-center">Concepto</th>
+              <th class="text-center">Valor (ETH)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tx of transactions | async">
+              <td class="text-truncate" style="max-width: 200px;">{{tx.hash}}</td>
+              <td class="text-center">{{tx.blockNumber}}</td>
+              <td class="text-truncate" style="max-width: 200px;">{{tx.from}}</td>
+              <td class="text-truncate" style="max-width: 200px;">{{tx.to}}</td>
+              <td class="text-truncate" style="max-width: 200px;">Pago de abono</td>
+              <td class="text-center">{{tx.value}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+

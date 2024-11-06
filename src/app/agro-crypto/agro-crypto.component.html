@@ -52,8 +52,18 @@
       <!-- Campo Mensaje -->
       <div class="mb-3">
         <label for="message" class="form-label">✉️ Mensaje</label>
-        <input type="text" id="message" class="form-control" [(ngModel)]="message" name="message"
-          placeholder="Mensaje opcional" required>
+        <!-- Campo Mensaje -->
+        <div class="mb-3">
+          <select id="message" class="form-select" [(ngModel)]="message" name="message" required>
+            <option value="" disabled selected>Selecciona una acción...</option>
+            <option value="Riego de cultivos">Riego de cultivos</option>
+            <option value="Fertilización">Pago de abono</option>
+            <option value="Cosecha">Cosecha</option>
+            <option value="Control de plagas">Control de plagas</option>
+          </select>
+          <div class="form-text">Selecciona una acción opcional para la transacción.</div>
+        </div>
+
         <div class="form-text">Añade un mensaje opcional para la transacción.</div>
       </div>
 

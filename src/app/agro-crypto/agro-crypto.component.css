@@ -2,7 +2,7 @@
 :host {
     display: block;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 100%;
 }
 
 .spinner-border {
@@ -46,9 +46,6 @@ html {
     justify-content: center;
 }
 
-.container-fluid {
-    height: 500%;
-}
 /* Estilos para la barra de carga */
 .loading-overlay {
     position: fixed;
