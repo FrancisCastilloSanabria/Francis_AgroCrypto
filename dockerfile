@@ -7,8 +7,8 @@ WORKDIR /app
 # Copia package.json y package-lock.json para instalar solo dependencias
 COPY package*.json ./
 
-# Instala las dependencias
-RUN npm install
+# Instala las dependencias (ignorando advertencias de dependencias de pares)
+RUN npm install --legacy-peer-deps
 
 # Copia el código fuente de Angular
 COPY . .
