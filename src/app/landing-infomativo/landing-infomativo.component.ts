@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -9,11 +10,13 @@ import { TranslateService } from '@ngx-translate/core';
 export class LandingInfomativoComponent {
   isDarkMode = false;
   selectedLanguage: string = 'es'; // Español por defecto
+  loading: boolean = false; // Variable para controlar la carga
 
   constructor(
     private renderer: Renderer2,
     private translate: TranslateService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {
     this.translate.setDefaultLang(this.selectedLanguage);
   }
@@ -52,4 +55,14 @@ export class LandingInfomativoComponent {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
+
+  navigateToLogin() {
+    this.loading = true; // Mostrar barra de carga
+    setTimeout(() => {
+      this.loading = false; // Ocultar barra de carga
+      this.router.navigate(['/login']);
+    }, 3000); // Retraso de 3 segundos antes de la redirección
+  }
+
+  
 }

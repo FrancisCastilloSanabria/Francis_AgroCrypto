@@ -143,7 +143,8 @@
 <div class="container my-5">
   <div class="row">
     <div class="start col-md-6">
-      <iframe src="https://splendid-quokka-651c72.netlify.app/" width="30%" height="100px" style="border:none;"></iframe>
+      <iframe src="https://splendid-quokka-651c72.netlify.app/" width="30%" height="100px"
+        style="border:none;"></iframe>
 
       <h1>Somos <strong>AgroCrypto</strong></h1>
       <h2>Tu mejor opción</h2>
@@ -163,15 +164,25 @@
       </div>
     </div>
 
+    <!-- Barra de carga -->
+    <div *ngIf="loading" class="loading-overlay">
+      <div class="spinner-border text-warning" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
+      <p class="text-center mt-3">⏳ Un momento, estamos conectando su cuenta con MetaMask...</p>
+    </div>
+
     <div class="col-md-4 offset-md-2 bg-dark text-white p-4">
       <h3>Ingresa a tu cuenta</h3>
       <p>Cualquier día a cualquier hora</p>
       <p>Solo ingresa, disfruta y AgroDisfruta GRATIS</p>
       <br>
       <br>
-      <div class="container">
+
+      <!-- Botón de conexión con MetaMask -->
+      <div class="container" *ngIf="!loading">
         <button (click)="connectMetamask()" class="btn btn-warning">
-          Ingresar con Metamask
+          Ingresar con MetaMask
         </button>
       </div>
       <br>

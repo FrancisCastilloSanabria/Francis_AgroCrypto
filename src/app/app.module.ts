@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,7 @@ import { MetamaskService } from './services/metamask.service';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LandingInfomativoComponent } from './landing-infomativo/landing-infomativo.component';
+import { AgroCryptoComponent } from './agro-crypto/agro-crypto.component';
 
 
 @NgModule({
@@ -19,12 +21,14 @@ import { LandingInfomativoComponent } from './landing-infomativo/landing-infomat
     LoginComponent,
     DashboardComponent,
     LandingInfomativoComponent,
+    AgroCryptoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     FormsModule,
     TranslateModule.forRoot({
       loader: {

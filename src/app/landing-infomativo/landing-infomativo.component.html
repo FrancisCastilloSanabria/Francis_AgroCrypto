@@ -12874,9 +12874,21 @@
         <p [innerHTML]="'CONTENT.ACCESS' | translate"></p>
 
 
-        <div class="social-icons">
-          <button type="button" class="btn btn-success" routerLink="/login" style='width: 100%;'>AGRO-LOGIN</button>
+        <!-- Barra de carga -->
+        <div *ngIf="loading" class="loading-overlay">
+          <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+          <p class="text-center mt-3">⏳ Estamos ingresando al apartado de logeo...</p>
         </div>
+
+        <!-- Botón de AGRO-LOGIN -->
+        <div class="social-icons" *ngIf="!loading">
+          <button type="button" class="btn btn-success" (click)="navigateToLogin()" style='width: 100%;'>
+            AGRO-LOGIN
+          </button>
+        </div>
+
       </div>
     </section>
     <hr class="m-0" />
