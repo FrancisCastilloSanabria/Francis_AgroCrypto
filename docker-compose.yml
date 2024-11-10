@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   frontagro:
-    image: francisxd/agro:v1
+    image: francisxd/agrocrypo-francis:latest
     container_name: frontagro
     ports:
       - "4200:80"
