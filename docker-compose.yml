@@ -1,8 +1,0 @@
-version: "3.8"
-services:
-  frontagro:
-    image: francisxd/agro:v1
-    container_name: frontagro
-    ports:
-      - "4200:80"
-    restart: always
