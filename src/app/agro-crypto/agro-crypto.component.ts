@@ -106,32 +106,23 @@ export class AgroCryptoComponent implements OnInit {
 
   async sendEther() {
     const weiAmount = this.web3.utils.toWei(this.amount.toString(), 'ether');
-
+  
     if (!this.web3.utils.isAddress(this.recipient)) {
       alert('La dirección del destinatario no es válida');
       return;
     }
-
+  
     if (this.amount <= 0) {
       alert('Por favor, introduce una cantidad válida');
       return;
     }
-
-    console.log('Enviando', weiAmount, 'wei a', this.recipient);
-
+  
     try {
-      // Realizar la transferencia de Ether directamente al destinatario
-      await this.web3.eth.sendTransaction({
-        from: this.accounts[0],
-        to: this.recipient,
-        value: weiAmount
-      });
-
-      // Llamar al contrato para registrar la transacción
+      // Llamar al contrato para registrar la transacción y enviar Ether en una sola transacción
       const tx = await this.contract.methods.recordTransfer(this.recipient, weiAmount, this.message)
-        .send({ from: this.accounts[0] });
-
-      console.log('Registro exitoso en el contrato:', tx);
+        .send({ from: this.accounts[0], value: weiAmount });
+  
+      console.log('Registro exitoso en el contrato con envío de Ether:', tx);
       alert('Transacción enviada y registrada en el contrato');
       this.resetForm();
     } catch (error) {
