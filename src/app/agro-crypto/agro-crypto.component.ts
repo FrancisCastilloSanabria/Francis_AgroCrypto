@@ -151,3 +151,5 @@ export class AgroCryptoComponent implements OnInit {
     this.router.navigate(['/Dashboard']); // Asegúrate de tener una ruta para el historial de transacciones
   }
 }
+
+//cometario
